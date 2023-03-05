@@ -14,14 +14,19 @@
 ***************************************************************************/
 
 const priceList = [10.5, 9.9, 8.9, 4.5];
-let gstPrecent = 8;
+let gstPercent = 8;
 
 function outerFunction(array) {
     // Add code here
-    
+    let totalPrice = 0;
+    for (let i=0;i<array.length;i++){
+        totalPrice+=array[i];
+    }
     return function(gst) {
         // Add inner function code here
+        return (totalPrice*(100+gstPercent)/100);
     }
+}
 console.log('Total price + GST =', outerFunction(priceList)(gstPercent));
     
 
@@ -37,9 +42,12 @@ function createQueue(fn) {
 
 function doArray(array) {
     // Add code here to manipulate the array
+    array.splice(0,0,"start");
+    array.push("last");
+    console.log(array);
     return array;
 }
-const result = ...
+const result = createQueue(doArray);
     
 // Add code here - pass a reference of a function as an argument
 
